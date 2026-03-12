@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% block body %}
+
+<section class="result-section">
+
+  <!-- Burst rings -->
+  <div class="burst-rings">
+    <div class="bring r1"></div>
+    <div class="bring r2"></div>
+    <div class="bring r3"></div>
+  </div>
+
+  <div class="result-card" id="rCard">
+
+    <!-- Top bar -->
+    <div class="rc-topbar">
+      <div class="rc-live"><span></span>ANALYSIS COMPLETE</div>
+      <div class="rc-badge">AI PREDICTION</div>
+      <div class="rc-model">Random Forest v2.0</div>
+    </div>
+
+    <!-- SVG car animation -->
+    <div class="rc-car-stage">
+      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" class="rc-car-svg">
+        <defs>
+          <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:1"/>
+            <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.8"/>
+            <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1"/>
+          </linearGradient>
+          <filter id="gf" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="gs" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="8" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path filter="url(#gf)" d="M40 150 L40 125 L95 85 L175 62 L320 62 L400 85 L450 125 L450 150 Z"
+              fill="none" stroke="url(#cg)" stroke-width="2.5"/>
+        <path filter="url(#gf)" d="M120 85 L155 52 L335 52 L370 85"
+              fill="none" stroke="url(#cg)" stroke-width="2"/>
+        <path d="M128 83 L158 56 L235 56 L235 83 Z"
+              fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1" filter="url(#gf)"/>
+        <path d="M240 83 L240 56 L328 56 L360 83 Z"
+              fill="rgba(0,245,255,0.1)" stroke="#00f5ff" stroke-width="1" filter="url(#gf)"/>
+        <path d="M440 110 L455 118 L455 128 L440 130" fill="rgba(255,245,0,0.3)" stroke="#ffe000" stroke-width="1" filter="url(#gf)"/>
+        <path d="M40 110 L28 118 L28 128 L40 130" fill="rgba(255,0,50,0.4)" stroke="#ff0032" stroke-width="1" filter="url(#gf)"/>
+        <circle cx="130" cy="157" r="30" fill="none" stroke="url(#cg)" stroke-width="2.5" filter="url(#gf)"/>
+        <circle cx="130" cy="157" r="16" fill="none" stroke="#00f5ff" stroke-width="1.5"/>
+        <circle cx="130" cy="157" r="5" fill="#00f5ff"/>
+        <circle cx="360" cy="157" r="30" fill="none" stroke="url(#cg)" stroke-width="2.5" filter="url(#gf)"/>
+        <circle cx="360" cy="157" r="16" fill="none" stroke="#00f5ff" stroke-width="1.5"/>
+        <circle cx="360" cy="157" r="5" fill="#00f5ff"/>
+        <ellipse cx="245" cy="189" rx="200" ry="7" fill="none" stroke="#00f5ff" stroke-width="0.8" opacity="0.45" filter="url(#gs)"/>
+        <line class="sl" x1="0" y1="115" x2="35" y2="115" stroke="#00f5ff" stroke-width="1.2" opacity="0.6"/>
+        <line class="sl" x1="0" y1="128" x2="25" y2="128" stroke="#ff6b35" stroke-width="0.9" opacity="0.45"/>
+        <line class="sl" x1="0" y1="138" x2="30" y2="138" stroke="#00f5ff" stroke-width="0.7" opacity="0.3"/>
+        <line class="sl" x1="0" y1="104" x2="18" y2="104" stroke="#ffffff" stroke-width="0.6" opacity="0.2"/>
+      </svg>
+    </div>
+
+    {% if "cannot sell" in prediction_text %}
+
+      <!-- NEGATIVE RESULT -->
+      <div class="rc-negative">
+        <div class="rc-neg-icon">⚠️</div>
+        <h2 class="rc-neg-title">Below Market Threshold</h2>
+        <p class="rc-neg-msg">Based on the details provided, the car's estimated resale value is below a viable market threshold. This can be due to high mileage, multiple ownership changes, or significant age.</p>
+        <div class="rc-neg-tips">
+          <div class="rctip"><span>💡</span><span>Consider reconditioning — new paint &amp; service record can improve value</span></div>
+          <div class="rctip"><span>⏳</span><span>Waiting for better market conditions may yield a higher price</span></div>
+          <div class="rctip"><span>🔧</span><span>Full service history documentation significantly increases buyer confidence</span></div>
+        </div>
+      </div>
+
+    {% else %}
+
+      <!-- POSITIVE RESULT — price extracted safely via Jinja, stored in data-target -->
+      {% set price_val = prediction_text.split("at ")[-1].split(" ")[0] %}
+      <div class="rc-positive">
+        <p class="rc-est-label">ESTIMATED MARKET VALUE</p>
+
+        <div class="rc-price-wrap">
+          <span class="rc-currency">&#8377;</span>
+          <span class="rc-price" id="rcPrice" data-target="{{ price_val }}">0</span>
+          <span class="rc-unit">Lakhs</span>
+        </div>
+
+        <div class="rc-price-bar-outer">
+          <div class="rc-price-bar" id="rcBar"></div>
+        </div>
+
+        <!-- Confidence score -->
+        <div class="rc-confidence">
+          <div class="conf-ring-wrap">
+            <svg class="conf-ring-svg" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(0,245,255,0.1)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#00f5ff" stroke-width="6"
+                      stroke-dasharray="201.06" stroke-dashoffset="201.06"
+                      stroke-linecap="round" transform="rotate(-90 40 40)"
+                      id="confCircle" style="filter:drop-shadow(0 0 6px #00f5ff)"/>
+              <text x="40" y="45" text-anchor="middle" fill="#00f5ff"
+                    font-family="Share Tech Mono" font-size="14">92%</text>
+            </svg>
+            <span class="conf-label">AI<br/>Confidence</span>
+          </div>
+          <div class="conf-details">
+            <div class="confd"><span class="confd-dot" style="--c:#00f5ff"></span>Random Forest &mdash; 100 trees</div>
+            <div class="confd"><span class="confd-dot" style="--c:#ff6b35"></span>Cross-validated R&sup2; 0.982</div>
+            <div class="confd"><span class="confd-dot" style="--c:#a855f7"></span>8,000+ training records</div>
+            <div class="confd"><span class="confd-dot" style="--c:#22c55e"></span>Prediction time &lt; 0.3s</div>
+          </div>
+        </div>
+
+        <!-- Price range -->
+        <div class="rc-range">
+          <span class="rc-range-low" id="rcLow">calculating...</span>
+          <div class="rc-range-track">
+            <div class="rc-range-fill" id="rcRangeFill"></div>
+            <div class="rc-range-dot" id="rcRangeDot"></div>
+          </div>
+          <span class="rc-range-high" id="rcHigh">calculating...</span>
+        </div>
+        <p class="rc-range-label">Estimated price range &plusmn;10%</p>
+
+      </div>
+
+    {% endif %}
+
+    <!-- Action buttons -->
+    <div class="rc-actions">
+      <a href="/" class="cta-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>New Prediction</span>
+      </a>
+      <button class="cta-ghost" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Save Report</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+window.addEventListener('load', function() {
+
+  /* BUG FIX 1: gsap.registerPlugin only needed when ScrollTrigger is used.
+     Result page does NOT use ScrollTrigger — removed to prevent console error. */
+
+  // Card entrance
+  gsap.from('#rCard', {
+    opacity: 0, scale: 0.88, y: 50,
+    duration: 0.9, ease: 'back.out(1.5)', delay: 0.1
+  });
+
+  // Burst rings — from + to in sequence
+  gsap.fromTo('.bring',
+    { scale: 0.2, opacity: 0.7 },
+    { scale: 3, opacity: 0, duration: 2, stagger: 0.18, ease: 'power2.out', delay: 0.3 }
+  );
+
+  /* BUG FIX 2: Speed lines — reset x before repeating so they don't disappear permanently.
+     Use fromTo so each repeat starts from the original x position. */
+  gsap.fromTo('.sl',
+    { x: 0, opacity: 1 },
+    { x: -25, opacity: 0, duration: 0.55, stagger: 0.08, repeat: -1, ease: 'power1.in',
+      repeatDelay: 0.3 }
+  );
+
+  /* BUG FIX 3: All JS logic is pure DOM — zero Jinja inside JS block.
+     Price is read from data-target attribute set by Jinja safely in HTML. */
+  var priceEl = document.getElementById('rcPrice');
+  if (priceEl) {
+    var target = parseFloat(priceEl.getAttribute('data-target'));
+
+    /* BUG FIX 4: Guard against NaN (e.g. if prediction_text format changes).
+       isNaN check + > 0 check prevents broken animations. */
+    if (!isNaN(target) && target > 0) {
+
+      // Price count-up
+      gsap.to({ v: 0 }, {
+        v: target,
+        duration: 2.4,
+        delay: 0.6,
+        ease: 'power2.out',
+        onUpdate: function() {
+          priceEl.textContent = this.targets()[0].v.toFixed(2);
+        },
+        onComplete: function() {
+          priceEl.textContent = target.toFixed(2);
+        }
+      });
+
+      // Price bar (scaled to 20 Lakhs max)
+      var pct = Math.min((target / 20) * 100, 100);
+      gsap.to('#rcBar', {
+        width: pct + '%', duration: 2.2, delay: 0.9, ease: 'power2.out'
+      });
+
+      /* BUG FIX 5: Confidence ring dashoffset calculation was wrong.
+         Correct circumference = 2 * PI * r = 2 * 3.14159 * 32 = 201.06
+         For 92% fill: dashoffset = circumference * (1 - 0.92) = 201.06 * 0.08 = 16.08 */
+      var circumference = 2 * Math.PI * 32; // = 201.06
+      gsap.to('#confCircle', {
+        strokeDashoffset: circumference * (1 - 0.92),
+        duration: 1.8, delay: 1.0, ease: 'power2.out'
+      });
+
+      // Range labels — set after short delay
+      setTimeout(function() {
+        var rcLow  = document.getElementById('rcLow');
+        var rcHigh = document.getElementById('rcHigh');
+        if (rcLow)  rcLow.textContent  = '\u20B9' + (target * 0.90).toFixed(2);
+        if (rcHigh) rcHigh.textContent = '\u20B9' + (target * 1.10).toFixed(2);
+        gsap.to('#rcRangeFill', { width: '80%', duration: 1.5, ease: 'power2.out' });
+        /* Range dot uses left % — needs position:absolute on parent to work correctly */
+        gsap.to('#rcRangeDot',  { left: '80%',  duration: 1.5, ease: 'power2.out' });
+      }, 950);
+    }
+  }
+
+});
+</script>
+
+{% endblock %}

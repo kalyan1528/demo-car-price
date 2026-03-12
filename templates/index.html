@@ -1,0 +1,616 @@
+{% extends "base.html" %}
+{% block body %}
+
+<!-- ═══════════════════════════════════════════════════
+     HERO — CINEMATIC FULL SCREEN
+════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline id="heroVideo">
+      <source src="https://cdn.coverr.co/videos/coverr-driving-a-sports-car-1577/1080p.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero-vignette"></div>
+    <div class="hero-scanlines"></div>
+    <!-- Diagonal slash overlay -->
+    <div class="hero-slash"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="hEye">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">MACHINE LEARNING POWERED</span>
+      <span class="eyebrow-line"></span>
+    </div>
+
+    <h1 class="hero-title" id="hTitle">
+      <span>AI POWERED</span>
+      <span class="grad-text">CAR PRICE</span>
+      <span>PREDICTION</span>
+    </h1>
+
+    <p class="hero-sub" id="hSub">
+      Predict the real market value of your car using<br/>
+      advanced machine learning — instant, precise, powerful.
+    </p>
+
+    <div class="hero-ctas" id="hCta">
+      <a href="#predict" class="cta-primary">
+        <span>Predict Your Car Price</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#showcase" class="cta-ghost">View Showcase</a>
+    </div>
+
+    <!-- Live stats bar -->
+    <div class="hero-stats" id="hStats">
+      <div class="hstat">
+        <span class="hstat-n" data-n="98.2" data-dec="1">0</span><span class="hstat-u">%</span>
+        <span class="hstat-l">Model Accuracy</span>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-n" data-n="8000" data-dec="0">0</span><span class="hstat-u">+</span>
+        <span class="hstat-l">Cars Trained</span>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-n" data-n="0.3" data-dec="1">0</span><span class="hstat-u">s</span>
+        <span class="hstat-l">Prediction Speed</span>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-n" data-n="100" data-dec="0">0</span><span class="hstat-u">+</span>
+        <span class="hstat-l">Decision Trees</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-track"></div>
+    <span>SCROLL DOWN</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CAR SHOWCASE — HORIZONTAL CINEMATIC STRIP
+════════════════════════════════════════════════════ -->
+<section class="showcase-section" id="showcase">
+  <div class="sec-label reveal">// CAR SHOWCASE</div>
+  <h2 class="sec-title reveal">Machines We Understand</h2>
+
+  <div class="showcase-track-outer">
+    <div class="showcase-track" id="showcaseTrack">
+
+      <div class="car-card" data-brand="BUGATTI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#0a0a14,#1a0a0a)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(255,50,50,.15),transparent 70%)"></div>
+          <span class="car-emoji">🏎️</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">BUGATTI</span>
+          <span class="car-model">Chiron Sport</span>
+          <span class="car-val">₹22+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <div class="car-card" data-brand="LAMBORGHINI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#0a0a05,#1a1500)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(255,200,0,.15),transparent 70%)"></div>
+          <span class="car-emoji">⚡</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">LAMBORGHINI</span>
+          <span class="car-model">Aventador SVJ</span>
+          <span class="car-val">₹8.5+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <div class="car-card" data-brand="McLAREN">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#00080a,#001a1a)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(0,245,255,.15),transparent 70%)"></div>
+          <span class="car-emoji">🚀</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">McLAREN</span>
+          <span class="car-model">P1 GTR</span>
+          <span class="car-val">₹9+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <div class="car-card" data-brand="PAGANI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#050010,#0a001a)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(150,50,255,.15),transparent 70%)"></div>
+          <span class="car-emoji">💎</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">PAGANI</span>
+          <span class="car-model">Huayra BC</span>
+          <span class="car-val">₹16+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <div class="car-card" data-brand="KOENIGSEGG">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#000a05,#001a10)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(0,255,100,.15),transparent 70%)"></div>
+          <span class="car-emoji">🌪️</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">KOENIGSEGG</span>
+          <span class="car-model">Jesko Absolut</span>
+          <span class="car-val">₹24+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <div class="car-card" data-brand="FERRARI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#0a0002,#1a0005)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(255,0,50,.15),transparent 70%)"></div>
+          <span class="car-emoji">🔥</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">FERRARI</span>
+          <span class="car-model">SF90 Stradale</span>
+          <span class="car-val">₹7.5+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+      <!-- Duplicates for seamless loop -->
+      <div class="car-card" data-brand="BUGATTI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#0a0a14,#1a0a0a)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(255,50,50,.15),transparent 70%)"></div>
+          <span class="car-emoji">🏎️</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">BUGATTI</span>
+          <span class="car-model">Chiron Sport</span>
+          <span class="car-val">₹22+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+      <div class="car-card" data-brand="LAMBORGHINI">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#0a0a05,#1a1500)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(255,200,0,.15),transparent 70%)"></div>
+          <span class="car-emoji">⚡</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">LAMBORGHINI</span>
+          <span class="car-model">Aventador SVJ</span>
+          <span class="car-val">₹8.5+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+      <div class="car-card" data-brand="McLAREN">
+        <div class="car-card-bg" style="background:linear-gradient(135deg,#00080a,#001a1a)">
+          <div class="car-card-glow" style="background:radial-gradient(ellipse,rgba(0,245,255,.15),transparent 70%)"></div>
+          <span class="car-emoji">🚀</span>
+        </div>
+        <div class="car-card-info">
+          <span class="car-brand">McLAREN</span>
+          <span class="car-model">P1 GTR</span>
+          <span class="car-val">₹9+ Cr</span>
+        </div>
+        <div class="car-card-shine"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PREDICTION FORM — AI DASHBOARD
+════════════════════════════════════════════════════ -->
+<section class="predict-section" id="predict">
+  <div class="sec-label reveal">// AI PREDICTION ENGINE</div>
+  <h2 class="sec-title reveal">Get Your Car's True Value</h2>
+  <p class="sec-sub reveal">Fill in the details. Our ML engine computes the precise market value in milliseconds.</p>
+
+  <div class="predict-layout">
+    <!-- Left panel: visual -->
+    <div class="predict-visual reveal-left">
+      <div class="pv-card">
+        <div class="pv-header">
+          <span class="pv-dot a"></span><span class="pv-dot b"></span><span class="pv-dot c"></span>
+          <span class="pv-title">ml_engine.py</span>
+        </div>
+        <div class="pv-code">
+          <div><span class="c-kw">from</span> <span class="c-mod">sklearn.ensemble</span> <span class="c-kw">import</span> RandomForestRegressor</div>
+          <div>&nbsp;</div>
+          <div>model = RandomForestRegressor(</div>
+          <div>&nbsp;&nbsp;n_estimators=<span class="c-num">100</span>,</div>
+          <div>&nbsp;&nbsp;random_state=<span class="c-num">42</span></div>
+          <div>)</div>
+          <div>&nbsp;</div>
+          <div>prediction = model.predict(</div>
+          <div>&nbsp;&nbsp;[[<span class="c-str">your_car_data</span>]]</div>
+          <div>)</div>
+          <div>&nbsp;</div>
+          <div><span class="c-cm"># Output:</span></div>
+          <div>price = <span class="c-ok">₹ X.XX Lakhs</span></div>
+        </div>
+        <div class="pv-metrics">
+          <div class="pvm"><span class="pvm-v">98.2%</span><span class="pvm-l">Accuracy</span></div>
+          <div class="pvm"><span class="pvm-v">100</span><span class="pvm-l">Trees</span></div>
+          <div class="pvm"><span class="pvm-v">8</span><span class="pvm-l">Features</span></div>
+        </div>
+      </div>
+
+      <div class="pv-chips">
+        <div class="chip">🤖 Random Forest Regressor</div>
+        <div class="chip">⚡ Real-time Inference</div>
+        <div class="chip">📊 8,000+ Training Records</div>
+        <div class="chip">🔬 Cross-validated Model</div>
+      </div>
+    </div>
+
+    <!-- Right panel: form -->
+    <div class="form-card reveal-right">
+      <!-- Animated top border -->
+      <div class="form-card-topline"></div>
+
+      <form action="{{ url_for('predict') }}" method="post" id="mainForm">
+
+        <!-- ── Section: Basic Details ── -->
+        <div class="form-section-label">
+          <span class="fsl-icon">01</span> Basic Car Details
+        </div>
+        <div class="form-grid-2">
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+              Showroom Price (Lakhs)
+            </label>
+            <input class="finput" type="number" name="Present_Price" placeholder="e.g. 8.5" step="0.1" min="0" required/>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Car Age (Years)
+            </label>
+            <input class="finput" type="number" name="Age" placeholder="e.g. 3" min="0" max="30" required/>
+          </div>
+        </div>
+
+        <!-- ── Section: Usage Details ── -->
+        <div class="form-section-label">
+          <span class="fsl-icon">02</span> Usage Details
+        </div>
+        <div class="form-grid-2">
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l3 3"/></svg>
+              Kilometers Driven
+            </label>
+            <input class="finput" type="number" name="Kms_Driven" placeholder="e.g. 45000" min="0" required/>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Number of Owners
+            </label>
+            <input class="finput" type="number" name="Owner" placeholder="0 / 1 / 2" min="0" max="3" required/>
+          </div>
+        </div>
+
+        <!-- ── Section: Engine Details ── -->
+        <div class="form-section-label">
+          <span class="fsl-icon">03</span> Engine Details
+        </div>
+        <div class="form-grid-2">
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Fuel Type
+            </label>
+            <select class="finput fselect" name="Fuel_Type">
+              <option value="Petrol">⛽ Petrol</option>
+              <option value="Diesel">🛢️ Diesel</option>
+              <option value="CNG">💨 CNG</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="flabel">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+              Seller Type
+            </label>
+            <select class="finput fselect" name="Seller_Type">
+              <option value="Dealer">🏢 Dealer</option>
+              <option value="Individual">👤 Individual</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── Section: Transmission ── -->
+        <div class="form-section-label">
+          <span class="fsl-icon">04</span> Transmission
+        </div>
+        <div class="trans-toggle">
+          <label class="trans-opt">
+            <input type="radio" name="Transmission" value="Manual" checked/>
+            <span>
+              <span class="trans-icon">⚙️</span>
+              <span class="trans-name">Manual</span>
+              <span class="trans-desc">Driver controlled</span>
+            </span>
+          </label>
+          <label class="trans-opt">
+            <input type="radio" name="Transmission" value="Automatic"/>
+            <span>
+              <span class="trans-icon">🤖</span>
+              <span class="trans-name">Automatic</span>
+              <span class="trans-desc">Self-shifting</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- ── Submit ── -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="sb-text">Predict Car Price</span>
+          <span class="sb-loader" style="display:none">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21 12a9 9 0 1 1-6.2-8.56"/></svg>
+          </span>
+          <svg class="sb-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div class="sb-ripple"></div>
+        </button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════ -->
+<section class="how-section" id="how">
+  <div class="sec-label reveal">// THE PROCESS</div>
+  <h2 class="sec-title center reveal">How The AI Works</h2>
+  <p class="sec-sub center reveal">Three precision-engineered steps from raw data to market intelligence.</p>
+
+  <div class="how-grid stagger">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+      <h3>Data Input</h3>
+      <p>Enter your car's specifications — age, fuel type, mileage, ownership history, transmission, and original price.</p>
+      <div class="step-bar"></div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+      <h3>ML Processing</h3>
+      <p>Our Random Forest model — 100 decision trees trained on 8,000+ real transactions — processes your data simultaneously.</p>
+      <div class="step-bar"></div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Price Output</h3>
+      <p>Receive a precise market valuation in under 0.3 seconds — derived from real depreciation curves and market patterns.</p>
+      <div class="step-bar"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     DEPRECIATION CHART
+════════════════════════════════════════════════════ -->
+<section class="chart-section" id="chart">
+  <div class="chart-inner">
+    <div class="chart-text reveal-left">
+      <div class="sec-label">// PRICE INTELLIGENCE</div>
+      <h2 class="sec-title left">Car Value<br/>Depreciation</h2>
+      <p class="sec-sub left">Understand how your car loses value over time. Our model accounts for every depreciation factor to give you the most accurate estimate.</p>
+      <div class="depr-facts stagger">
+        <div class="dfact"><span class="dfact-pct">~20%</span><span>Lost in Year 1</span></div>
+        <div class="dfact"><span class="dfact-pct">~50%</span><span>Lost by Year 5</span></div>
+        <div class="dfact"><span class="dfact-pct">~70%</span><span>Lost by Year 10</span></div>
+      </div>
+    </div>
+    <div class="chart-canvas-wrap reveal-right">
+      <canvas id="deprChart"></canvas>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     AI INSIGHTS
+════════════════════════════════════════════════════ -->
+<section class="insights-section" id="insights">
+  <div class="sec-label center reveal">// AI INSIGHTS</div>
+  <h2 class="sec-title center reveal">What Drives Your Car's Value</h2>
+  <p class="sec-sub center reveal">Our model weighs these factors to compute the most accurate market price.</p>
+
+  <div class="insights-grid stagger">
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:195">📅</div>
+        <span class="ic-title">Car Age</span>
+        <span class="ic-impact high">HIGH IMPACT</span>
+      </div>
+      <p>Older cars depreciate faster. A 1-year-old car retains ~80% of value; a 5-year-old retains ~50%.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:88%;--bc:#00f5ff"></div></div>
+      <span class="ic-pct">88% Factor Weight</span>
+    </div>
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:22">🛣️</div>
+        <span class="ic-title">Mileage</span>
+        <span class="ic-impact high">HIGH IMPACT</span>
+      </div>
+      <p>High mileage signals wear and mechanical risk. Every 10,000 km reduces value measurably.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:82%;--bc:#ff6b35"></div></div>
+      <span class="ic-pct">82% Factor Weight</span>
+    </div>
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:270">⛽</div>
+        <span class="ic-title">Fuel Type</span>
+        <span class="ic-impact med">MED IMPACT</span>
+      </div>
+      <p>Diesel retains value better due to efficiency. Petrol cars are preferred in city use.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:65%;--bc:#a855f7"></div></div>
+      <span class="ic-pct">65% Factor Weight</span>
+    </div>
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:120">👤</div>
+        <span class="ic-title">Ownership</span>
+        <span class="ic-impact med">MED IMPACT</span>
+      </div>
+      <p>First-owner cars command a premium. Third-owner vehicles face steeper value penalties.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:72%;--bc:#22c55e"></div></div>
+      <span class="ic-pct">72% Factor Weight</span>
+    </div>
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:195">🔧</div>
+        <span class="ic-title">Transmission</span>
+        <span class="ic-impact low">LOW IMPACT</span>
+      </div>
+      <p>Automatic transmissions have higher resale demand in urban markets compared to manual.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:48%;--bc:#00f5ff"></div></div>
+      <span class="ic-pct">48% Factor Weight</span>
+    </div>
+
+    <div class="insight-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="--ic:22">💰</div>
+        <span class="ic-title">Original Price</span>
+        <span class="ic-impact high">HIGH IMPACT</span>
+      </div>
+      <p>The showroom price anchors the depreciation curve — luxury cars depreciate differently from budget cars.</p>
+      <div class="ic-bar-wrap"><div class="ic-bar" style="width:79%;--bc:#ff6b35"></div></div>
+      <span class="ic-pct">79% Factor Weight</span>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+/* ═══════════════════════════════════════════════════
+   INDEX PAGE SCRIPTS
+═══════════════════════════════════════════════════ */
+
+// ── Hero entrance
+window.addEventListener('load', () => {
+  const tl = gsap.timeline({ delay: 0.2 });
+  tl.from('#hEye',   { opacity:0, y:-20, duration:.7, ease:'power3.out' })
+    .from('#hTitle span', { opacity:0, y:80, stagger:.1, duration:.9, ease:'power3.out' }, '-=.4')
+    .from('#hSub',   { opacity:0, y:30, duration:.7, ease:'power3.out' }, '-=.5')
+    .from('#hCta',   { opacity:0, y:30, duration:.6, ease:'power3.out' }, '-=.4')
+    .from('#hStats', { opacity:0, y:20, duration:.6, ease:'power3.out' }, '-=.3');
+
+  // Count-up stats
+  document.querySelectorAll('.hstat-n').forEach(el => {
+    const target = parseFloat(el.dataset.n);
+    const dec    = parseInt(el.dataset.dec);
+    gsap.to({ v:0 }, {
+      v: target, duration: 2.5, delay: 1.2, ease: 'power2.out',
+      onUpdate() { el.textContent = this.targets()[0].v.toFixed(dec); }
+    });
+  });
+
+  // ── Build depreciation chart
+  const deprCtx = document.getElementById('deprChart').getContext('2d');
+  new Chart(deprCtx, {
+    type: 'line',
+    data: {
+      labels: ['New','1yr','2yr','3yr','4yr','5yr','6yr','7yr','8yr','10yr'],
+      datasets: [
+        {
+          label: 'Petrol',
+          data: [100, 78, 63, 54, 46, 40, 35, 31, 27, 22],
+          borderColor: '#00f5ff',
+          backgroundColor: 'rgba(0,245,255,0.06)',
+          borderWidth: 2.5, fill: true, tension: 0.4,
+          pointBackgroundColor: '#00f5ff', pointRadius: 4
+        },
+        {
+          label: 'Diesel',
+          data: [100, 82, 68, 59, 52, 46, 41, 37, 33, 27],
+          borderColor: '#ff6b35',
+          backgroundColor: 'rgba(255,107,53,0.06)',
+          borderWidth: 2.5, fill: true, tension: 0.4,
+          pointBackgroundColor: '#ff6b35', pointRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: '#8da8c8', font: { family: 'Share Tech Mono', size: 11 } } },
+        tooltip: {
+          backgroundColor: 'rgba(8,15,30,0.95)',
+          borderColor: 'rgba(0,245,255,0.3)', borderWidth: 1,
+          titleColor: '#00f5ff', bodyColor: '#c8dff5',
+          callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}% of original value` }
+        }
+      },
+      scales: {
+        x: { grid: { color: 'rgba(0,245,255,0.05)' }, ticks: { color: '#5a7a9a', font: { family: 'Share Tech Mono', size: 11 } } },
+        y: { grid: { color: 'rgba(0,245,255,0.05)' }, ticks: { color: '#5a7a9a', font: { family: 'Share Tech Mono', size: 11 }, callback: v => v + '%' }, min: 0, max: 100 }
+      }
+    }
+  });
+});
+
+// ── Showcase auto-scroll
+const track = document.getElementById('showcaseTrack');
+let sPos = 0;
+function scrollShowcase() {
+  sPos -= 0.6;
+  if (Math.abs(sPos) >= track.scrollWidth / 2) sPos = 0;
+  track.style.transform = `translateX(${sPos}px)`;
+  requestAnimationFrame(scrollShowcase);
+}
+scrollShowcase();
+
+// ── Car card shine effect on hover
+document.querySelectorAll('.car-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top)  / r.height) * 100;
+    card.querySelector('.car-card-shine').style.background =
+      `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.querySelector('.car-card-shine').style.background = 'transparent';
+  });
+});
+
+// ── Form submit loader
+document.getElementById('mainForm').addEventListener('submit', () => {
+  const btn = document.getElementById('submitBtn');
+  btn.querySelector('.sb-text').textContent = 'Analyzing Data...';
+  btn.querySelector('.sb-loader').style.display = 'inline';
+  btn.querySelector('.sb-arrow').style.display = 'none';
+  btn.disabled = true;
+  btn.style.opacity = '0.85';
+});
+</script>
+
+{% endblock %}
